@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <!DOCTYPE generatorConfiguration PUBLIC
+   "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+   "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<classPathEntry
+		location="<TODO>/workshop/libs/ojdbc8.jar" />
+	<context id="context1">
+		<jdbcConnection driverClass="oracle.jdbc.OracleDriver"
+			connectionURL="jdbc:oracle:thin:@tfokeatpdb_high?TNS_ADMIN=/app/Wallet_tfOKEATPDB"
+			userId="admin" password="TODO" />
+
+		<javaModelGenerator
+			targetPackage="com.workshop.okeatp.dataset" targetProject="oke_atp_workshop" />
+		<sqlMapGenerator
+			targetPackage="com.workshop.okeatp.mapper" targetProject="oke_atp_workshop" />
+		<javaClientGenerator
+			targetPackage="com.workshop.okeatp.mapper" targetProject="oke_atp_workshop" type="XMLMAPPER" />
+
+		<table tableName="COMMENTS" />
+		<table tableName="ITEMS" />
+		<table tableName="ITEMS_CTD" />
+		<table tableName="OFFERS" />
+		<table tableName="USERS" />
+	</context>
+</generatorConfiguration>

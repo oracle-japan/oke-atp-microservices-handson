@@ -1,0 +1,27 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: workshop
+  datasource:
+    name: druidDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: oracle.jdbc.OracleDriver
+      url: jdbc:oracle:thin:@tfokeatpdb_high?TNS_ADMIN=/app/Wallet_tfOKEATPDB/
+      username: admin
+      password: TFWorkshop__2000
+      filters: stat,wall,slf4j,config
+      max-active: 100
+      initial-size: 1
+      max-wait: 60000
+      min-idle: 1
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 1 from dual
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 50
+      max-pool-prepared-statement-per-connection-size: 20

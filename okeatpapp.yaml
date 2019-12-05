@@ -1,0 +1,64 @@
+#
+# Copyright (c) 2018, 2019 Oracle and/or its affiliates. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: okeatpapp
+  namespace: default
+spec:
+  serviceName: okeatpapp
+  selector:
+    matchLabels:
+      app: okeatpapp
+  replicas: 1 # deployment runs 1 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: okeatpapp
+    spec:
+      containers:
+      - name: okeatpapp
+        image: nrt.ocir.io/sehubjapacprod/workshop/okeatpapp:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80 #Endpoint is at port 80 in the container
+        volumeMounts:
+        - mountPath: /app/Wallet_tfOKEATPDB
+          name: atp-secret
+          readOnly: true
+      imagePullSecrets:
+      - name: workshop-ocirsecret
+      volumes:
+       - name: atp-secret
+         secret:
+           defaultMode: 420
+           secretName: atp-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: okeatpapp
+  namespace: default
+spec:
+  type: NodePort #Exposes the service as a node port
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8888
+  selector:
+    app: okeatpapp
