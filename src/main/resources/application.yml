@@ -8,7 +8,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driver-class-name: oracle.jdbc.OracleDriver
-      url: jdbc:oracle:thin:@tfokeatpdb_high?TNS_ADMIN=/app/Wallet_tfOKEATPDB/
+      url: jdbc:oracle:thin:@tfokeatpdb_high?TNS_ADMIN=/db-demo/creds
       username: admin
       password: TFWorkshop__2000
       filters: stat,wall,slf4j,config
