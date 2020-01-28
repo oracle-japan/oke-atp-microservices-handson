@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
+​
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -94,7 +94,7 @@ metadata:
   name: okeatpapp
   namespace: default
 spec:
-  type: NodePort #Exposes the service as a node port
+  type: LoadBalancer
   ports:
   - port: 80
     protocol: TCP
