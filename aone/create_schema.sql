@@ -7,6 +7,7 @@
 --------------------------------------------------------
 
    CREATE USER HANDSON IDENTIFIED BY Welcome12345;
+   alter user HANDSON quota unlimited on DATA;
 
 --------------------------------------------------------
 --  DDL for Sequence COMMENTS_COMMENT_ID_SEQ
@@ -205,9 +206,9 @@ begin
    then
       :new.comment_id := comments_comment_id_seq.nextval;
    end if;
-end HANDSON.COMMENTS_COMMENT_ID_TRIGGER;
+end COMMENTS_COMMENT_ID_TRIGGER;
 /
-ALTER TRIGGER HANDSON."COMMENTS_COMMENT_ID_TRIGGER" ENABLE;
+ALTER TRIGGER HANDSON.COMMENTS_COMMENT_ID_TRIGGER ENABLE;
 --------------------------------------------------------
 --  DDL for Trigger ITEMS_ITEM_ID_TRIGGER
 --------------------------------------------------------
@@ -220,9 +221,9 @@ begin
    then
       :new.ITEM_ID := ITEMS_ITEM_ID_seq.nextval;
    end if;
-end HANDSON.ITEMS_ITEM_ID_TRIGGER;
+end ITEMS_ITEM_ID_TRIGGER;
 /
-ALTER TRIGGER HANDSON."ITEMS_ITEM_ID_TRIGGER" ENABLE;
+ALTER TRIGGER HANDSON.ITEMS_ITEM_ID_TRIGGER ENABLE;
 --------------------------------------------------------
 --  DDL for Trigger OFFERS_OFFER_ID_TRIGGER
 --------------------------------------------------------
@@ -235,9 +236,9 @@ begin
    then
       :new.OFFER_ID := OFFERS_OFFER_ID_seq.nextval;
    end if;
-end HANDSON.OFFERS_OFFER_ID_TRIGGER;
+end OFFERS_OFFER_ID_TRIGGER;
 /
-ALTER TRIGGER HANDSON."OFFERS_OFFER_ID_TRIGGER" ENABLE;
+ALTER TRIGGER HANDSON.OFFERS_OFFER_ID_TRIGGER ENABLE;
 --------------------------------------------------------
 --  DDL for Trigger USERS_USER_ID_TRIGGER
 --------------------------------------------------------
@@ -250,6 +251,6 @@ begin
    then
       :new.user_id := users_user_id_seq.nextval;
    end if;
-end HANDSON.USERS_USER_ID_TRIGGER;
+end USERS_USER_ID_TRIGGER;
 /
-ALTER TRIGGER HANDSON."USERS_USER_ID_TRIGGER" ENABLE;
+ALTER TRIGGER HANDSON.USERS_USER_ID_TRIGGER ENABLE;
