@@ -9,8 +9,8 @@ spring:
     druid:
       driver-class-name: oracle.jdbc.OracleDriver
       url: jdbc:oracle:thin:@tfokeatpdb_high?TNS_ADMIN=/db-demo/creds
-      username: admin
-      password: TFWorkshop__2000
+      username: ${SECRETS_DEMO_USER}
+      password: ${SECRETS_DEMO_USER_PASSWD}
       filters: stat,wall,slf4j,config
       max-active: 100
       initial-size: 1

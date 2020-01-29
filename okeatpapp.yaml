@@ -54,6 +54,16 @@ spec:
         ports:
         - containerPort: 80 #Endpoint is at port 80 in the container
         env: 
+        - name: SECRETS_DEMO_USER
+          valueFrom:
+            secretKeyRef:
+              name: spring-security
+              key: spring.user.name
+        - name: SECRETS_DEMO_USER_PASSWD
+          valueFrom:
+            secretKeyRef:
+              name: spring-security
+              key: spring.user.password
         # Pass DB ADMIN user name that is part of the secret created by the binding request.
         # - name: spring.datasource.druid.username
         #   valueFrom:
@@ -62,11 +72,11 @@ spec:
         #       key: user_name
         # Pass DB ADMIN password. The password is managed by the user and hence not part of the secret created by the binding request.
         # In this example we read the password form secret atp-user-cred that is required to be created by the user.  
-        - name: spring.datasource.druid.password
-          valueFrom:
-            secretKeyRef:
-              name: atp-user-cred
-              key: password
+        # - name: spring.datasource.druid.password
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: atp-user-cred
+        #       key: password
         # Pass  Wallet password to enable application to read Oracle wallet. The password is managed by the user and hence not part of the secret created by the binding request.
         # In this example we read the password form secret atp-user-cred that is required to be created by the user.  
         - name: WALLET_PWD
