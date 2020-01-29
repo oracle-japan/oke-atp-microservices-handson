@@ -8,6 +8,7 @@
 
    CREATE USER HANDSON IDENTIFIED BY Welcome12345;
    alter user HANDSON quota unlimited on DATA;
+   grant connect,resource to HANDSON;
 
 --------------------------------------------------------
 --  DDL for Sequence COMMENTS_COMMENT_ID_SEQ
